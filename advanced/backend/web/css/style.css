@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #b71c1c;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus {
+    background-color: #d32f2f;
+    color: white;
+}
+
+#w1>li>a,
+#w1>li>form>button {
+    color: white;
+}
