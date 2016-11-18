@@ -1,82 +1,123 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
-
 use yii\helpers\Html;
+use yii\widgets\Menu;
+use yii\widgets\Breadcrumbs;
+
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
-use common\widgets\Alert;
 
-AppAsset::register($this);
+
+/**
+ * @var $this \yii\base\View
+ * @var $content string
+ */
+// $this->registerAssetBundle('app');
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage(); ?>
+
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html>
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><?php echo Html::encode($this->title); ?></title>
+    <?php $this->head(); ?>
+    
+		<meta name="description" content="" />
+		<meta name="HandheldFriendly" content="True" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" type="text/css" href="../web/assets/font/font-awesome/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../web/assets/css/materialize.css" />
+		<link rel="stylesheet" type="text/css" href="../web/assets/css/prism.css" />
 </head>
-<body>
-<?php $this->beginBody() ?>
+<body class="post-template page-template page grey lighten-5">
+  <?php $this->beginBody() ?>
+	<nav>
+		<div class="nav-wrapper cyan darken-3">
+	  		<?php
+						echo Menu::widget([
+						    'options' => ['id' => "nav-mobile", 'class' => 'left side-nav'],
+						    'items' => [
+						        ['label' => 'Home', 'url' => ['site/index']],
+						        ['label' => 'About', 'url' => ['site/about']],
+						        ['label' => 'Contact', 'url' => ['site/contact']],
+						        ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest],
+						        ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+						    ],
+						]);
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
+						if (!Yii::$app->user->isGuest) {
+        					$menuItems[] = '<span>'
+            					. Html::beginForm(['/site/logout'], 'post')
+            					. Html::submitButton(
+                					'Logout (' . Yii::$app->user->identity->username . ')',
+                					['class' => 'btn btn-link']
+            				)
+            				. Html::endForm()
+            				. '</span>';
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+            				
+						    echo Nav::widget([
+						        'options' => ['class' => 'navbar-nav navbar-right'],
+						        'items' => $menuItems,
+						    ]);
+					    }
+					?>
+			<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+		</div>
+	</nav>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+		
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+<main class="content" role="main">
+		<section id="blog-intro" class="cyan section z-depth-1 article-intro" style="background-image:url('../web/assets/images/post.jpg?v=b2f76a195e');"></section>
+	<section id="main-inner-container" class="container">
+		<article class="post page card-panel z-depth-1 article-container">
+			<header>
+				<time class="post-date grey-text" datetime="2014-03-17"><i class="fa fa-clock-o"></i> 17 March 2014</time>
+				<h1><?php echo Html::encode(\Yii::$app->name); ?></h1>
+			</header>
+			<section class="post-content">
+				<p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+				</p>
+				<p>
+				  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+				</p>
+			</section>
+			
+			<section class="post-content">
+				<?php echo $content; ?>
+			</section>
+			<footer>
+				<section id="social-share">
+					<p>
+						Share this post: <br>
+						<a href="#" class="btn-floating white cyan-text"><i class="fa fa-twitter cyan-text"></i></a>
+						<a href="#" class="btn-floating white cyan-text"><i class="fa fa-facebook cyan-text"></i></a>
+						<a href="#" class="btn-floating white cyan-text"><i class="fa fa-google-plus cyan-text"></i></a>
+					</p>
+				</section>
+			</footer>
+		</article>
+	</section>
+</main>
 
-<?php $this->endBody() ?>
+
+
+		<footer class="site-footer clearfix">
+			 <section class="copyright grey-text darken-2"><a href="/" class="grey-text darken-5"><?php echo Html::encode($this->title); ?></a> &copy; 2015</section>
+			 <section class="poweredby grey-text darken-2">proudly published with <a href="http://yiiframework.com" class="grey-text darken-5">Yii2</a></section>
+		</footer>
+
+		<script src="../web/assets/js/jquery.min.js"></script>
+
+
+		<script type="text/javascript" src="../web/assets/js/materialize.js"></script>
+		<script type="text/javascript" src="../web/assets/js/prism.js"></script>
+  <?php $this->endBody() ?>
 </body>
 </html>
-<?php $this->endPage() ?>
+<?php $this->endPage(); ?>

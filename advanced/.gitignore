@@ -22,13 +22,11 @@ Thumbs.db
 composer.phar
 
 # Mac DS_Store Files
-/.vagrant
 .DS_Store
 
 # phpunit itself is not needed
 phpunit.phar
- local phpunit config
-/.vagrant
+# local phpunit config
 /phpunit.xml
 
 # vagrant runtime
