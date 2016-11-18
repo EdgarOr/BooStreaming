@@ -58,7 +58,7 @@ use yii\bootstrap\NavBar;
             				. Html::endForm()
             				. '</span>';
 
-            				
+
 						    echo Nav::widget([
 						        'options' => ['class' => 'navbar-nav navbar-right'],
 						        'items' => $menuItems,
@@ -76,17 +76,20 @@ use yii\bootstrap\NavBar;
 	<section id="main-inner-container" class="container">
 		<article class="post page card-panel z-depth-1 article-container">
 			<header>
-				<time class="post-date grey-text" datetime="2014-03-17"><i class="fa fa-clock-o"></i> 17 March 2014</time>
-				<h1><?php echo Html::encode(\Yii::$app->name); ?></h1>
+				<time class="post-date grey-text">
+					<i class="fa fa-clock-o"></i> 
+					<?=date('d/m/Y')?>
+				</time>
+				<!--<h1><?//php echo Html::encode(\Yii::$app->name); ?></h1>-->
 			</header>
-			<section class="post-content">
+			<!--<section class="post-content">
 				<p>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 				</p>
 				<p>
 				  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
 				</p>
-			</section>
+			</section>-->
 			
 			<section class="post-content">
 				<?php echo $content; ?>
