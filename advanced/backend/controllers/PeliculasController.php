@@ -13,6 +13,7 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use backend\models\Actores;
 use backend\models\Directores;
+use backend\models\Categorias;
 /**
  * PeliculasController implements the CRUD actions for Peliculas model.
  */
@@ -76,16 +77,17 @@ class PeliculasController extends Controller
     }
 
     public function registrarPeliculaURL($model) {
-        if(!empty( $model->peliculaUrl)) {
-                $nombreImagen = $model->pelicula_titulo;
-                $model->peliculaUrl = UploadedFile::getInstance($model, 'pelicula_url');
-                $model->peliculaUrl->saveAs( 'peliculas/'.$nombreImagen.'.'.$model->peliculaUrl->extension );
-
-                return 'peliculas/'.$nombreImagen.'.'.$model->peliculaUrl->extension;
-                
-            } else {
-                return 'peliculas/sin_titulo';
-            }
+        
+        if(isset($_FILES['peliculaUrl']['tmp_name']) && $_FILES['peliculaUrl']['tmp_name'] != null) {
+            $file = $_FILES; 
+            $targetPeliculaUrl = 'peliculas/'.basename($file['peliculaUrl']['name']);                          
+            $extension = pathinfo($targetPeliculaUrl, PATHINFO_EXTENSION);
+            $nombreImagen = $model->pelicula_titulo;                
+            move_uploaded_file($file['videoFile']['tmp_name'],'peliculas/'.$nombreImagen.'.'.$extension);
+            return 'peliculas/'.$nombreImagen.'.'.$extension;
+        } else {
+            return 'peliculas/sin_titulo';
+        }
     }
 
     /**
@@ -98,9 +100,13 @@ class PeliculasController extends Controller
         $model = new Peliculas();
         $actor = new Actores();
         $director = new Directores;
+        $categoria = new Categorias;
 
-        if ($model->load(Yii::$app->request->post()) && $actor->load(Yii::$app->request->post() )) {
-         
+        if ($model->load(Yii::$app->request->post()) 
+            && $actor->load(Yii::$app->request->post())
+            && $director->load(Yii::$app->request->post())
+            && $categoria->load(Yii::$app->request->post()) ) {         
+           
             $peliculaActor = new PeliculasHasActores;           
             $peliculaDirector = new PeliculasHasDirectores;           
             
@@ -136,6 +142,7 @@ class PeliculasController extends Controller
                 'model' => $model,
                 'actor' => $actor,
                 'director' => $director,
+                'categoria' => $categoria,
             ]);
         }
     }

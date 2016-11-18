@@ -51,7 +51,7 @@ class Peliculas extends \yii\db\ActiveRecord
             [[ 'pelicula_anio', 'pelicula_fechaAlta'], 'safe'],
             [['pelicula_titulo'], 'string', 'max' => 150],
             [['pelicula_clasificacion'], 'string', 'max' => 5],
-            [['peliculaUrl'], 'file', 'extensions' => 'mp4, mkv, avi, wmv, mov, flv, mpeg'],
+            [['peliculaUrl'], 'file', 'extensions' => 'mp4, mkv, avi, wmv, mov, flv, mpeg', 'maxFiles' => 1],
             [['portadaUrl'], 'image', 'minWidth' => '1024', 'minHeight' => '1024'],
         ];
     }

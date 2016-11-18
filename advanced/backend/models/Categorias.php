@@ -15,6 +15,8 @@ use Yii;
  */
 class Categorias extends \yii\db\ActiveRecord
 {
+
+    public $categorias = [];
     /**
      * @inheritdoc
      */
@@ -31,6 +33,7 @@ class Categorias extends \yii\db\ActiveRecord
         return [
             [['categoria_nombre'], 'required'],
             [['categoria_nombre'], 'string', 'max' => 20],
+            [['categorias'], 'safe'],
         ];
     }
 

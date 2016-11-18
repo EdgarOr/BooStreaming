@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Actores;
 use backend\models\Directores;
+use backend\models\Categorias;
 use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
@@ -31,29 +32,50 @@ use kartik\select2\Select2;
             <?= $form->field($model, 'pelicula_titulo')->textInput(['maxlength' => true, 
                                                                     'placeholder' => 'Inserte el título de la película']) ?> 
 
+            <?= $form->field($model, 'pelicula_clasificacion')->dropDownList([ 
+                            'G' => 'G - Todos los públicos', 
+                            'PG' => 'PG - Guía paternal sugerida', 
+                            'PG-13' => 'PG-13 - Guía paternal estricta',
+                            'R' => 'R - Restringido',
+                            'NC-17' => 'NC-17 - Prohibido para audiencia de 17 años o menos',
+                            ], ['prompt' => 'Seleccione una clasificación']) ?>
+
             <?= $form->field($model, 'pelicula_sinopsis')->textarea(['rows' => 4, 
                                                                     'placeholder' => 'Inserte la sinopsis de la película']) ?>
             <!--?= $form->field($model, 'pelicula_ranking')->textInput() ?-->
         </div>
-        <div class="col-md-3">
-            
-            <?= $form->field($model, 'pelicula_clasificacion')->dropDownList([ 
-                'G' => 'G - Todos los públicos', 
-                'PG' => 'PG - Guía paternal sugerida', 
-                'PG-13' => 'PG-13 - Guía paternal estricta',
-                'R' => 'R - Restringido',
-                'NC-17' => 'NC-17 - Prohibido para audiencia de 17 años o menos',
-                ], ['prompt' => 'Seleccione una clasificación']) ?>
-
-             <?= $form->field($model, 'pelicula_duracion')
+        <div class="col-md-3">            
+            <?= $form->field($model, 'pelicula_duracion')
                                     ->input('number', ['placeholder' =>'En minutos. P.e.: 1:30 h = 90 min', 'min'=>30])
                                      ?>
 
-              <?= $form->field($model, 'pelicula_anio')->input('number', ['value' => date('Y'), 'min' => 1888]) ?>
-        </div>
-        <div class="col-md-1">
+            <?= $form->field($model, 'pelicula_anio')->input('number', ['value' => date('Y'), 'min' => 1888]) ?>
+            
             <?= $form->field($model, 'portadaUrl')->fileInput(); ?>
-            <?= $form->field($model, 'peliculaUrl')->fileInput(); ?>              
+            <?= $form->field($model, 'peliculaUrl')->fileInput(); ?>  
+        </div>
+        <div class="col-md-4 text-center">
+            <h2 >Añadir categorías</h2> 
+            <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                 <?= $form->field($categoria, 'categorias')->widget(Select2::classname(), [
+                                'data' => ArrayHelper::map(Categorias::find()->all(), 
+                                                            'categoria_id', 'categoria_nombre'),
+                                'language' => 'en',
+                                'options' => ['placeholder' => 'Seleccione una categoría', 
+                                                'id' =>'categoria_id', 
+                                                'multiple' =>true],
+                                'pluginOptions' => [
+                                    'allowClear' => true,
+                                    
+                                ],
+                ]) ?>
+                 <?= $form->field($categoria, 'categoria_nombre')->textInput(['maxlength' => true, 
+                                                            'placeholder' => 'Inserte nombre de categoria']) ?>
+            </div>
+            
+            </div>           
         </div>   
     </div>
 
