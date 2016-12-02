@@ -12,6 +12,13 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'jwplayer' => [
+            'class' => 'wadeshuler\jwplayer\JWConfig',
+            'key' => '5ViLXZ1JpaRiMlGjMMqS3gphG4eiLn4Qa0rW9w==',  // <-- Your Key Here!!
+            'htmlOptions' => [
+                'class' => 'myVideoPlayer',
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],

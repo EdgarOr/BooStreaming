@@ -1,53 +1,104 @@
 <?php
 
+use wadeshuler\jwplayer\JWPlayer;
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'BooStreaming';
+$s = $s;
 ?>
-<div class="site-index">
+<?php
+    if(Yii::$app->user->isGuest){
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+    
+        echo "<h2> Inicia sesión :'v</h2";
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+    }else{
 
-    <div class="body-content">
+        echo 
+        "<div class='site-index'>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class='panel'>";
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                    if($s != ''){
+                        echo "<h2>".$s."</h2>";
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+                        echo "<p class='lead'>".
+                            /*<?=*/ JWPlayer::widget([
+                                'playerOptions' => [
+                                    'file' => 'uploads/'.$s.'.mp4',
+                                    'autostart' => true,
+                                    'title' => $s,
+                                    'preload' => 'auto',
+                                    'image' => 'uploads/'.$s.'.png',
+                                    /*'skin.name' => 'three'*/
+                                ]
+                            ]) /*?>*/
+                        ."<p>"
+
+                        ."<p class='lead'>Description not avaiable.</p>";
+                    }
+
+                //<!--<p><a class='btn btn-lg btn-success' href='http://www.yiiframework.com'>Get started with Yii</a></p>-->
+            echo "</div>
+
+            <div class='body-content'>
+
+                <div class='row jumbotron'>
+                    <div class='col-lg-12'>          
+                        <h4>You may also like</h4>
+                    </div>
+
+                    <div class='col-sm-3 panel panel-primary'>
+                        <p><b>Video's title</b></p>
+            
+                        <p>
+                            <a href='index.php?r=site/video&s=ygotas'>                    
+                                <img src='uploads/ygotas.png' alt='Videos title'>
+                            </a>
+
+                            Video's description
+                        </p>
+
+                        <!--<p><a class='btn btn-default' href='http://www.yiiframework.com/doc/'>Yii Documentation &raquo;</a></p>-->
+                    </div>
+                    <div class='col-sm-3 panel panel-primary'>
+                        <p><b>Video's title</b></p>
+            
+                        <p>
+                            <img src='uploads/video_thumbnail.jpg' alt='Videos title'>
+                            Video's description.
+                        </p>
+
+                        <!--<p><a class='btn btn-default' href='http://www.yiiframework.com/doc/'>Yii Documentation &raquo;</a></p>-->
+                    </div>
+                    <div class='col-sm-3 panel panel-primary'>
+                        <p><b>Video's title</b></p>
+            
+                        <p>
+                            <img src='uploads/video_thumbnail.jpg' alt='Videos title'>
+                            Video's description.
+                        </p>
+
+                        <!--<p><a class='btn btn-default' href='http://www.yiiframework.com/doc/'>Yii Documentation &raquo;</a></p>-->
+                    </div>
+                    <div class='col-sm-3 panel panel-primary'>
+                        <p><b>Video's title</b></p>
+            
+                        <p>
+                            <a href='index.php?r=site/video&s=arslan'>                    
+                                <img src='uploads/arslan.png' alt='Videos title'>
+                            </a>
+
+                            Video's description.
+                        </p>
+
+                        <!--<p><a class='btn btn-default' href='http://www.yiiframework.com/doc/'>Yii Documentation &raquo;</a></p>-->
+                    </div>
+                </div>
+
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+        </div>";
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
+    }
+?>

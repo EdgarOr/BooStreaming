@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9323fb9ec34be08df5dce4140cae7e32",
-    "content-hash": "0b67a9843837abebdc153409664e69a1",
+    "hash": "303e9aed437698ac4762f4d2926dfa80",
+    "content-hash": "e91d97a0802d4af77c19d84bd28d7eca",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -356,12 +356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "d7bfdabc48d766f4f4a82f715315f19d25f4a0d9"
+                "reference": "7deb625a37f7f13a77a697a8367e2e44e2462d7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/d7bfdabc48d766f4f4a82f715315f19d25f4a0d9",
-                "reference": "d7bfdabc48d766f4f4a82f715315f19d25f4a0d9",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/7deb625a37f7f13a77a697a8367e2e44e2462d7e",
+                "reference": "7deb625a37f7f13a77a697a8367e2e44e2462d7e",
                 "shasum": ""
             },
             "require": {
@@ -401,20 +401,20 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-11-03 17:45:17"
+            "time": "2016-11-17 09:07:14"
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.3",
+            "version": "v5.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
+                "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
-                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/545ce9136690cea74f98f86fbb9c92dd9ab1a756",
+                "reference": "545ce9136690cea74f98f86fbb9c92dd9ab1a756",
                 "shasum": ""
             },
             "require": {
@@ -454,7 +454,49 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-07-08 11:51:25"
+            "time": "2016-11-24 01:01:23"
+        },
+        {
+            "name": "wadeshuler/yii2-jwplayer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WadeShuler/yii2-jwplayer.git",
+                "reference": "39884ceb58e660f23f72fe828d3e3732bc0bfc6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WadeShuler/yii2-jwplayer/zipball/39884ceb58e660f23f72fe828d3e3732bc0bfc6f",
+                "reference": "39884ceb58e660f23f72fe828d3e3732bc0bfc6f",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "wadeshuler\\jwplayer\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wade Shuler"
+                }
+            ],
+            "description": "JWPlayer extension widget for the Yii2 Framework",
+            "keywords": [
+                "Longtail Video",
+                "extension",
+                "jwplayer",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-07-26 15:24:58"
         },
         {
             "name": "yiisoft/yii2",
@@ -860,21 +902,21 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.0.6",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "55ed2e853ed8050a34415f63a4da84f88a56f895"
+                "reference": "a74a2433ad1dfda30a253a92f6db52c131807432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/55ed2e853ed8050a34415f63a4da84f88a56f895",
-                "reference": "55ed2e853ed8050a34415f63a4da84f88a56f895",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/a74a2433ad1dfda30a253a92f6db52c131807432",
+                "reference": "a74a2433ad1dfda30a253a92f6db52c131807432",
                 "shasum": ""
             },
             "require": {
-                "yiisoft/yii2": ">=2.0.4",
-                "yiisoft/yii2-bootstrap": "*"
+                "yiisoft/yii2": "~2.0.4",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
             },
             "type": "yii2-extension",
             "extra": {
@@ -903,7 +945,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2016-03-17 03:50:19"
+            "time": "2016-11-24 09:42:29"
         },
         {
             "name": "yiisoft/yii2-faker",

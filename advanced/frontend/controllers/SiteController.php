@@ -72,7 +72,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+            's' => '',
+        ]);
     }
 
     /**
@@ -208,6 +210,12 @@ class SiteController extends Controller
 
         return $this->render('resetPassword', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionVideo($s){
+        return $this->render('index', [
+            's' => $s,
         ]);
     }
 }

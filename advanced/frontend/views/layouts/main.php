@@ -64,6 +64,7 @@ use yii\bootstrap\NavBar;
 						        'items' => $menuItems,
 						    ]);
 					    }
+
 					?>
 			<a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
 		</div>
@@ -97,7 +98,7 @@ use yii\bootstrap\NavBar;
 			<footer>
 				<section id="social-share">
 					<p>
-						Share this post: <br>
+						Share what you are watching: <br>
 						<a href="#" class="btn-floating white cyan-text"><i class="fa fa-twitter cyan-text"></i></a>
 						<a href="#" class="btn-floating white cyan-text"><i class="fa fa-facebook cyan-text"></i></a>
 						<a href="#" class="btn-floating white cyan-text"><i class="fa fa-google-plus cyan-text"></i></a>
