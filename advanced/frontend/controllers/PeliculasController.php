@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use Yii;
-use app\models\Peliculas;
-use app\models\PeliculasSearch;
+use frontend\models\Peliculas;
+use frontend\models\PeliculasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PeliculaController implements the CRUD actions for Peliculas model.
+ * PeliculasController implements the CRUD actions for Peliculas model.
  */
-class PeliculaController extends Controller
+class PeliculasController extends Controller
 {
     /**
      * @inheritdoc
@@ -113,7 +113,7 @@ class PeliculaController extends Controller
      * @return Peliculas the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    public static function findModel($id)
     {
         if (($model = Peliculas::findOne($id)) !== null) {
             return $model;

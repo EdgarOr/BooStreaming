@@ -13,6 +13,9 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use frontend\models\PeliculasSearch;
+use frontend\controllers\PeliculasController;
+
 /**
  * Site controller
  */
@@ -72,9 +75,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index', [
-            's' => '',
-        ]);
+        if(Yii::$app->user->isGuest){
+            return $this->render('index');
+
+        }else{
+            $searchModel = new PeliculasSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+            return $this->render('../peliculas/index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);        
+        }
     }
 
     /**
@@ -90,7 +102,9 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            //return $this->goBack();
+            return $this->actionIndex();
+
         } else {
             return $this->render('login', [
                 'model' => $model,
@@ -154,7 +168,8 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
+                    //return $this->goHome();
+                    return $this->actionIndex();
                 }
             }
         }
@@ -213,9 +228,16 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionVideo($s){
-        return $this->render('index', [
-            's' => $s,
-        ]);
+    public function actionVideo($m){
+        if(Yii::$app->user->isGuest){
+            return $this->actionIndex();
+
+        }else{
+            return $this->render('../peliculas/video', [
+                /*'g' => $g,
+                's' => $s,*/
+                'm' => $m,
+            ]);
+        }
     }
 }

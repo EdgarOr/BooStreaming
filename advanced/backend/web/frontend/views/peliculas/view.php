@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Peliculas */
+/* @var $model frontend\models\Peliculas */
 
 $this->title = $model->pelicula_id;
 $this->params['breadcrumbs'][] = ['label' => 'Peliculas', 'url' => ['index']];
@@ -24,10 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
-
-    <?=
-        $model -> pelicula_titulo;
-    ?>
 
     <?= DetailView::widget([
         'model' => $model,

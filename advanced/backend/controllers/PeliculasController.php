@@ -112,7 +112,8 @@ class PeliculasController extends Controller
             
             $model->pelicula_url = $this->registrarPeliculaURL($model);
             $model->pelicula_portada = $this->registrarPortadaURL($model);
-            $model->pelicula_fechaAlta = date('Y-m-d');
+            //$model->pelicula_fechaAlta = date('Y-m-d');
+            $model->pelicula_fechaAlta = date('Y-m-d H:m:s');
             $model->save();
 
              if (!empty($actor->actor_nombre)) {
